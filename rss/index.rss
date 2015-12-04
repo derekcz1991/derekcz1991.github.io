@@ -1,0 +1,77 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>自然醒</title><description>I make serious code - so strong. It wakes up the neighbors.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Fri, 04 Dec 2015 09:00:40 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setup Ghost for GitHub Pages (For OS X)</title><description>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
+
+&lt;h4 id="installnodejs"&gt;Install Node.js&lt;/h4&gt;
+
+&lt;p&gt;Ghost is written in &lt;a href="http://nodejs.org/"&gt;Node.js&lt;/a&gt;, so you will need the Node.js runtime.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install the package from the .pkg&lt;/li&gt;
+&lt;li&gt;Make sure that &lt;code&gt;/usr/local/bin&lt;/code&gt; is in your &lt;code&gt;$PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;node -v&lt;/code&gt; to&lt;/li&gt;&lt;/ul&gt;</description><link>http://localhost:2368/setup-ghost-for-github-pages/</link><guid isPermaLink="false">f647daec-7cad-43ca-a818-9faaab5af06b</guid><dc:creator>CHEN Zhuo</dc:creator><pubDate>Fri, 04 Dec 2015 08:52:16 GMT</pubDate><content:encoded>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
+
+&lt;h4 id="installnodejs"&gt;Install Node.js&lt;/h4&gt;
+
+&lt;p&gt;Ghost is written in &lt;a href="http://nodejs.org/"&gt;Node.js&lt;/a&gt;, so you will need the Node.js runtime.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Install the package from the .pkg&lt;/li&gt;
+&lt;li&gt;Make sure that &lt;code&gt;/usr/local/bin&lt;/code&gt; is in your &lt;code&gt;$PATH&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Run &lt;code&gt;node -v&lt;/code&gt; to check&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="setupghostlocally"&gt;Setup Ghost locally&lt;/h4&gt;
+
+&lt;p&gt;Check for the latest version of Ghost from &lt;a href="https://ghost.org/"&gt;Ghost.org&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unzip and go to the directory&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm install&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm start&lt;/code&gt; to run Ghost locally&lt;/li&gt;
+&lt;li&gt;Visit &lt;a href="http://127.0.0.1:2368/ghost"&gt;http://127.0.0.1:2368/ghost&lt;/a&gt; to create an admin account and setup Ghost locally&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="installbuster"&gt;Install Buster&lt;/h4&gt;
+
+&lt;p&gt;With the tool Buster you can export the Ghost blogs into static pages. First we install Buster with:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;easy_install pip&lt;/code&gt; (to install buster)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;brew install wget&lt;/code&gt; (required by buster)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="creategithubpagesrepo"&gt;Create GitHub Pages repo&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Go to your GitHub account and create a public repo named &lt;code&gt;accountname.github.io&lt;/code&gt; (in my case it was &lt;a href="http://localhost:2368/setup-ghost-for-github-pages/derekcz1991.github.io"&gt;derekcz1991.github.io&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="preparestaticfolder"&gt;Prepare static folder&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I switched to a different folder from the Ghost installation to keep the generated static files separately (e.g. &lt;code&gt;/Users/derek/Documents/blog-static/&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="setupbuster"&gt;Set up Buster&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Under folder &lt;code&gt;/blog-static&lt;/code&gt; run &lt;code&gt;buster setup&lt;/code&gt; and enter the repo address you just created when prompted (e.g. &lt;a href="https://github.com/derekcz1991/derekcz1991.github.io"&gt;https://github.com/derekcz1991/derekcz1991.github.io&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;Once this is done, run &lt;code&gt;buster generate --domain=http://127.0.0.1:2368&lt;/code&gt; which will generate all the needed files under the static subfolder created in the previous step.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd static&lt;/code&gt; to switch into static subfolder, &lt;code&gt;git add .&lt;/code&gt; and then &lt;code&gt;git commit -m 'Initial commit'&lt;/code&gt; followed by a &lt;code&gt;git push&lt;/code&gt; to upload your repo to GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="visityourblog"&gt;Visit your Blog&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Now you can visit your static Ghost blog posts (for me &lt;a href="http://localhost:2368/setup-ghost-for-github-pages/derekcz1991.github.io"&gt;derekcz1991.github.io&lt;/a&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id="writenewblogposts"&gt;Write new Blog posts&lt;/h4&gt;
+
+&lt;p&gt;To write new Blog posts or update the existing ones, just start Ghost, edit, then publish and deploy the static pages.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cd ghost&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;npm start&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cd blog-static&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;buster deploy&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item></channel></rss>

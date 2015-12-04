@@ -1,0 +1,215 @@
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Setup Ghost for GitHub Pages (For OS X)</title>
+    <meta name="description" content="">
+
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="../favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=9890987e89">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
+
+    <link rel="canonical" href="index.html">
+    <meta name="referrer" content="origin">
+    
+    <meta property="og:site_name" content="自然醒">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Setup Ghost for GitHub Pages (For OS X)">
+    <meta property="og:description" content="To build your own static GitHub Pages with Ghost, just follow these steps. Install Node.js Ghost is written in Node.js, so you will need the Node.js runtime. Install the package from the .pkg Make sure that /usr/...">
+    <meta property="og:url" content="http://localhost:2368/setup-ghost-for-github-pages/">
+    <meta property="article:published_time" content="2015-12-04T08:52:16.861Z">
+    <meta property="article:modified_time" content="2015-12-04T08:52:16.859Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Setup Ghost for GitHub Pages (For OS X)">
+    <meta name="twitter:description" content="To build your own static GitHub Pages with Ghost, just follow these steps. Install Node.js Ghost is written in Node.js, so you will need the Node.js runtime. Install the package from the .pkg Make sure that /usr/...">
+    <meta name="twitter:url" content="http://localhost:2368/setup-ghost-for-github-pages/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "自然醒",
+    "author": {
+        "@type": "Person",
+        "name": "CHEN Zhuo",
+        "url": "http://localhost:2368/author/chen",
+        "sameAs": null,
+        "description": null
+    },
+    "headline": "Setup Ghost for GitHub Pages (For OS X)",
+    "url": "http://localhost:2368/setup-ghost-for-github-pages/",
+    "datePublished": "2015-12-04T08:52:16.861Z",
+    "dateModified": "2015-12-04T08:52:16.859Z",
+    "description": "To build your own static GitHub Pages with Ghost, just follow these steps. Install Node.js Ghost is written in Node.js, so you will need the Node.js runtime. Install the package from the .pkg Make sure that /usr/..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.7">
+    <link rel="alternate" type="application/rss+xml" title="自然醒" href="../rss/index.html">
+</head>
+<body class="post-template nav-closed">
+
+    <div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="index.html#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+            <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+    </ul>
+    <a class="subscribe-button icon-feed" href="../rss/index.rss">Subscribe</a>
+</div>
+<span class="nav-cover"></span>
+
+
+    <div class="site-wrapper">
+
+        
+
+
+<header class="main-header post-head no-cover">
+    <nav class="main-nav  clearfix">
+        
+            <a class="menu-button icon-menu" href="index.html#"><span class="word">Menu</span></a>
+    </nav>
+</header>
+
+<main class="content" role="main">
+    <article class="post">
+
+        <header class="post-header">
+            <h1 class="post-title">Setup Ghost for GitHub Pages (For OS X)</h1>
+            <section class="post-meta">
+                <time class="post-date" datetime="2015-12-04">04 December 2015</time> 
+            </section>
+        </header>
+
+        <section class="post-content">
+            <p>To build your own static <a href="https://pages.github.com/">GitHub Pages</a> with <a href="https://ghost.org/">Ghost</a>, just follow these steps.</p>
+
+<h4 id="installnodejs">Install Node.js</h4>
+
+<p>Ghost is written in <a href="http://nodejs.org/">Node.js</a>, so you will need the Node.js runtime.</p>
+
+<ul>
+<li>Install the package from the .pkg</li>
+<li>Make sure that <code>/usr/local/bin</code> is in your <code>$PATH</code></li>
+<li>Run <code>node -v</code> to check</li>
+</ul>
+
+<h4 id="setupghostlocally">Setup Ghost locally</h4>
+
+<p>Check for the latest version of Ghost from <a href="https://ghost.org/">Ghost.org</a></p>
+
+<ul>
+<li>Unzip and go to the directory</li>
+<li><code>npm install</code></li>
+<li><code>npm start</code> to run Ghost locally</li>
+<li>Visit <a href="http://127.0.0.1:2368/ghost">http://127.0.0.1:2368/ghost</a> to create an admin account and setup Ghost locally</li>
+</ul>
+
+<h4 id="installbuster">Install Buster</h4>
+
+<p>With the tool Buster you can export the Ghost blogs into static pages. First we install Buster with:</p>
+
+<ul>
+<li><code>easy_install pip</code> (to install buster)</li>
+<li><code>brew install wget</code> (required by buster)</li>
+</ul>
+
+<h4 id="creategithubpagesrepo">Create GitHub Pages repo</h4>
+
+<ul>
+<li>Go to your GitHub account and create a public repo named <code>accountname.github.io</code> (in my case it was <a href="http://localhost:2368/setup-ghost-for-github-pages/derekcz1991.github.io">derekcz1991.github.io</a>)</li>
+</ul>
+
+<h4 id="preparestaticfolder">Prepare static folder</h4>
+
+<ul>
+<li>I switched to a different folder from the Ghost installation to keep the generated static files separately (e.g. <code>/Users/derek/Documents/blog-static/</code>)</li>
+</ul>
+
+<h4 id="setupbuster">Set up Buster</h4>
+
+<ul>
+<li>Under folder <code>/blog-static</code> run <code>buster setup</code> and enter the repo address you just created when prompted (e.g. <a href="https://github.com/derekcz1991/derekcz1991.github.io">https://github.com/derekcz1991/derekcz1991.github.io</a>)</li>
+<li>Once this is done, run <code>buster generate --domain=http://127.0.0.1:2368</code> which will generate all the needed files under the static subfolder created in the previous step.</li>
+<li><code>cd static</code> to switch into static subfolder, <code>git add .</code> and then <code>git commit -m 'Initial commit'</code> followed by a <code>git push</code> to upload your repo to GitHub.</li>
+</ul>
+
+<h4 id="visityourblog">Visit your Blog</h4>
+
+<ul>
+<li>Now you can visit your static Ghost blog posts (for me <a href="http://localhost:2368/setup-ghost-for-github-pages/derekcz1991.github.io">derekcz1991.github.io</a>)</li>
+</ul>
+
+<h4 id="writenewblogposts">Write new Blog posts</h4>
+
+<p>To write new Blog posts or update the existing ones, just start Ghost, edit, then publish and deploy the static pages.</p>
+
+<ul>
+<li><code>cd ghost</code></li>
+<li><code>npm start</code></li>
+<li><code>cd blog-static</code></li>
+<li><code>buster deploy</code></li>
+</ul>
+        </section>
+
+        <footer class="post-footer">
+
+
+
+            <section class="author">
+                <h4><a href="../author/chen/">CHEN Zhuo</a></h4>
+
+                    <p>Read <a href="../author/chen/">more posts</a> by this author.</p>
+                <div class="author-meta">
+                    
+                    
+                </div>
+            </section>
+
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/intent/tweet?text=Setup%20Ghost%20for%20GitHub%20Pages%20(For%20OS%20X)&amp;url=http://localhost:2368/setup-ghost-for-github-pages/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/setup-ghost-for-github-pages/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url=http://localhost:2368/setup-ghost-for-github-pages/" onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+</aside>
+
+
+
+        <footer class="site-footer clearfix">
+            <section class="copyright"><a href="../">自然醒</a> © 2015</section>
+            <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    
+
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=9890987e89"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=9890987e89"></script>
+
+</body>
