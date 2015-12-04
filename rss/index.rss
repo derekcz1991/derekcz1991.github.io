@@ -1,4 +1,4 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>今天自然醒</title><description>I make serious code - so strong. It wakes up the neighbors.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Fri, 04 Dec 2015 09:11:03 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setup Ghost for GitHub Pages (For OS X)</title><description>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>今天自然醒</title><description>I make serious code - so strong. It wakes up the neighbors.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Fri, 04 Dec 2015 09:17:51 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setup Ghost for GitHub Pages (For OS X)</title><description>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
 
 &lt;h4 id="installnodejs"&gt;Install Node.js&lt;/h4&gt;
 
@@ -35,7 +35,8 @@
 &lt;p&gt;With the tool Buster you can export the Ghost blogs into static pages. First we install Buster with:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;easy_install pip&lt;/code&gt; (to install buster)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;easy_install pip&lt;/code&gt; (to install pip)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;pip install buster&lt;/code&gt;(to install buster)&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;brew install wget&lt;/code&gt; (required by buster)&lt;/li&gt;
 &lt;/ul&gt;
 
