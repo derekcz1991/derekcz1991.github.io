@@ -1,4 +1,267 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>今天自然醒</title><description>I make serious code - so strong. It wakes up the neighbors.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Fri, 04 Dec 2015 09:17:51 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Setup Ghost for GitHub Pages (For OS X)</title><description>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>今天自然醒</title><description>I make serious code - so strong. It wakes up the neighbors.</description><link>http://localhost:2368/</link><generator>Ghost 0.7</generator><lastBuildDate>Mon, 15 Feb 2016 11:30:07 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>初识 RxJava &amp; RxAndroid</title><description>&lt;p&gt;最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。&lt;/p&gt;
+
+&lt;h3 id="background"&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;先来说说&lt;a href="http://reactivex.io/"&gt;ReactiveX&lt;/a&gt;, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。
+&lt;img src="http://localhost:2368/content/images/2016/02/1.jpg" alt="A marble diagram representing two different streams"&gt;&lt;/p&gt;
+
+&lt;p&gt;在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过&lt;code&gt;Subscriber.onNext()&lt;/code&gt;发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(&lt;code&gt;Subscriber.onComplete()&lt;/code&gt;) 或者错误(&lt;code&gt;Subscriber.onError()&lt;/code&gt;)来结束。这看起来和观察着模式一样，但注意到有一点不同是如果Observable没有被订阅，它不会发出items.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/ReactiveX/RxJava"&gt;RxJava&lt;/a&gt;是Java VM对ReactiveX的实现。&lt;a href="https://github.com/ReactiveX/RxAndroid"&gt;RxAndroid&lt;/a&gt;是基于RxJava对Android的支持。&lt;/p&gt;</description><link>http://localhost:2368/chu-shi-rxjava-rxandroid/</link><guid isPermaLink="false">f86c0bdd-ca63-4861-8753-b87a8f86482d</guid><dc:creator>CHEN Zhuo</dc:creator><pubDate>Mon, 15 Feb 2016 11:21:53 GMT</pubDate><content:encoded>&lt;p&gt;最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。&lt;/p&gt;
+
+&lt;h3 id="background"&gt;Background&lt;/h3&gt;
+
+&lt;p&gt;先来说说&lt;a href="http://reactivex.io/"&gt;ReactiveX&lt;/a&gt;, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。
+&lt;img src="http://localhost:2368/content/images/2016/02/1.jpg" alt="A marble diagram representing two different streams"&gt;&lt;/p&gt;
+
+&lt;p&gt;在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过&lt;code&gt;Subscriber.onNext()&lt;/code&gt;发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(&lt;code&gt;Subscriber.onComplete()&lt;/code&gt;) 或者错误(&lt;code&gt;Subscriber.onError()&lt;/code&gt;)来结束。这看起来和观察着模式一样，但注意到有一点不同是如果Observable没有被订阅，它不会发出items.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/ReactiveX/RxJava"&gt;RxJava&lt;/a&gt;是Java VM对ReactiveX的实现。&lt;a href="https://github.com/ReactiveX/RxAndroid"&gt;RxAndroid&lt;/a&gt;是基于RxJava对Android的支持。&lt;/p&gt;
+
+&lt;h3 id="helloworld"&gt;Hello World&lt;/h3&gt;
+
+&lt;p&gt;下面用最简单的例子解释如何使用RxJava&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable&amp;lt;String&amp;gt; myObservable = Observable.create(
+    new Observable.OnSubscribe&amp;lt;String&amp;gt;() {
+        @Override
+        public void call(Subscriber&amp;lt;? super String&amp;gt; sub) {
+            sub.onNext("Hello, world!");
+            sub.onCompleted();
+        }
+    }
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;myObservable会发出一个"Hello, world!"然后完成，现在我们给myObservable创建一个subscriber来消费这个事件&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myObservable.subscribe(new Subscriber&amp;lt;String&amp;gt;() {
+    @Override
+    public void onNext(String s) {
+        System.out.println("onNext: " + s);
+    }
+
+    @Override
+    public void onCompleted() { 
+        System.out.println("onCompleted.");
+    }
+
+    @Override
+    public void onError(Throwable e) { }
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当myObservable调用&lt;code&gt;subscribe&lt;/code&gt;时，myObservable分别call subscriber的&lt;code&gt;onNext()&lt;/code&gt;和&lt;code&gt;onComplete()&lt;/code&gt;.因此输出的结果是&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;onNext: Hello, world!
+onCompleted.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="simplercode"&gt;Simpler Code&lt;/h3&gt;
+
+&lt;p&gt;在创建Observable时有多种方法(&lt;a href="http://reactivex.io/documentation/operators.html#alphabetical"&gt;wiki&lt;/a&gt;), 比如&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable&amp;lt;String&amp;gt; myObservable = Observable.just("Hello world!");
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;对于subscriber，可能并不关心&lt;code&gt;onComplete()&lt;/code&gt;和&lt;code&gt;onError()&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myObservable.subscribe(new Action1&amp;lt;String&amp;gt;() {
+    @Override
+    public void call(String s) {
+        System.out.println(s);
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当然Observable也支持&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myObservable.subscribe(onNextAction, onErrorAction, onCompleteAction);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="streamstransformation"&gt;Streams Transformation&lt;/h3&gt;
+
+&lt;p&gt;在最开始提到过ReactiveX的思想是把event和data当成流来处理，上面的例子中"Hello World!"就是一个data stream. 我们要改变"Hello World!"这个string时，就是对data stream进行处理。最简单直接的是:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable&amp;lt;String&amp;gt; myObservable = Observable.just("Hello world!" + " append");
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这种方法明显很死板，如果我想对myObservable有多个subscribers，subscribers只能拿到有相同&lt;code&gt;append&lt;/code&gt;的string. 于是用下面这个方法&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;myObservable.subscribe(new Action1&amp;lt;String&amp;gt;() {
+    @Override
+    public void call(String s) {
+        System.out.println(s + " append");
+    }
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;这个可以解决上面的问题，但是我们希望在&lt;code&gt;subscribe()&lt;/code&gt;中所作出的事情尽量简单(lightweight)，因为它运行在主线程中，也就是subscriber只应该关注结果并且去响应结果。接下来介绍ReactiveX中神奇的Operators.&lt;/p&gt;
+
+&lt;h3 id="operators"&gt;Operators&lt;/h3&gt;
+
+&lt;p&gt;现在用Operator &lt;code&gt;map&lt;/code&gt;来解决上面的问题&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable.just("Hello world!")
+    .map(new Func1&amp;lt;String, String&amp;gt;() {
+        @override
+        public String call(String s) {
+            return s + " append";
+        }
+    })
+    .subscribe(new Action1&amp;lt;String&amp;gt;() {
+        @Override
+        public void call(String s) {
+            System.out.println(s);
+        }
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在map的方法中，我们将data stream改变，然后再传递到subscribe中，可以将&lt;code&gt;just()&lt;/code&gt;看为起点，&lt;code&gt;subscribe()&lt;/code&gt;为终点，这个传递的过程中我们可以对stream使用任何的Operators. 仔细理解下图。
+&lt;img src="http://localhost:2368/content/images/2016/02/2.jpg" alt="marble diagrams"&gt;
+下面例子中是多个Operators的使用, 其它Operators请参考&lt;a href="http://reactivex.io/documentation/operators.html"&gt;doc&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable.just("Hello world!")
+    .map(new Func1&amp;lt;String, String&amp;gt;() {
+        @override
+        public String call(String s) {
+            return s + " append";
+        }
+    })
+    .map(new Func1&amp;lt;String, Integer&amp;gt;() {
+        @override
+        public String call(String s) {
+            return s.hashCode();
+        }
+    })
+    .map(new Func1&amp;lt;Integer, String&amp;gt;() {
+        @override
+        public String call(Integer i) {
+            return Integer.toString(i);
+        }
+    })
+    .subscribe(new Action1&amp;lt;String&amp;gt;() {
+        @Override
+        public void call(String s) {
+            System.out.println(s);
+        }
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="getstartinandroid"&gt;Get Start in Android&lt;/h3&gt;
+
+&lt;p&gt;想在Android Studio中使用RxAndroid很简单，在&lt;code&gt;build.gradle&lt;/code&gt;中添加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;compile 'io.reactivex:rxandroid:1.1.0'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我还使用了&lt;a href="https://github.com/JakeWharton/RxBinding"&gt;RxBinding&lt;/a&gt;, RxJava binding APIs for Android's UI widgets. &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;compile 'com.jakewharton.rxbinding:rxbinding:0.3.0'
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="schedulers"&gt;Schedulers&lt;/h3&gt;
+
+&lt;p&gt;在android中很多耗时操作是不能放在主线程中的，比如网络请求。在RxJava，很容易实现实现异步请求，只需要告诉&lt;code&gt;Observer&lt;/code&gt;的code在哪个线程中运行以及&lt;code&gt;Subscriber&lt;/code&gt;的code在哪个线程中运行。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable.create(
+    // network request
+)
+.subscribeOn(Schedulers.io())
+.observeOn(AndroidSchedulers.mainThread())
+.subscribe(
+    // UI update
+);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以看到以上的代码非常简洁，相对于我们之前通过&lt;code&gt;AsyncTask&lt;/code&gt;来实现的网络请求，容易很多，清晰很多。&lt;/p&gt;
+
+&lt;h3 id="subscriptions"&gt;Subscriptions&lt;/h3&gt;
+
+&lt;p&gt;对每一个Observer的&lt;code&gt;subscribe()&lt;/code&gt;都会产生一个subscription, 因为在android中很多操作都和生命周期挂钩，所以我们需要取消订阅这样一个操作，实现上也很简单。一旦取消订阅，RxJava会自己去终止我们一连串的operators.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Subscription subscription = Observable.create(
+        // network request
+    )
+    .subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribe(
+        // UI update
+    );
+
+// when activity destroy
+subscription.unsubscribe();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="codesnap"&gt;Code Snap&lt;/h3&gt;
+
+&lt;p&gt;下面给一些我自己使用RxAndroid的例子&lt;/p&gt;
+
+&lt;p&gt;监听&lt;code&gt;mPhoneView&lt;/code&gt;输入&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;RxTextView.textChangeEvents(mPhoneView).subscribe(new Action1&amp;lt;TextViewTextChangeEvent&amp;gt;() {
+        @Override 
+        public void call(TextViewTextChangeEvent phoneChangeObservable) {
+            countDownText.setEnabled(
+                (phoneChangeObservable.text().toString().length() == 11));
+        }
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;同时监听&lt;code&gt;mPhoneView&lt;/code&gt;和&lt;code&gt;mVCodeView&lt;/code&gt;输入, 如果都不为空，&lt;code&gt;loginBtn.setEnabled(true)&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable.combineLatest(RxTextView.textChangeEvents(mPhoneView),
+        RxTextView.textChangeEvents(mVCodeView),
+        new Func2&amp;lt;TextViewTextChangeEvent, TextViewTextChangeEvent, Boolean&amp;gt;() {
+            @Override 
+            public Boolean call(TextViewTextChangeEvent phoneChangeObservable,
+                TextViewTextChangeEvent vCodeChangeObservable) {
+                return !phoneChangeObservable.text().toString().isEmpty()
+                    &amp;amp;&amp;amp; !vCodeChangeObservable.text().toString().isEmpty();
+            }
+        })
+        .subscribe(new Action1&amp;lt;Boolean&amp;gt;() {
+            @Override 
+            public void call(Boolean aBoolean) {
+                loginBtn.setEnabled(aBoolean);
+            }
+    });
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;倒计时功能:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;rx.Observable.interval(1, TimeUnit.SECONDS)
+         .take(60, TimeUnit.SECONDS)
+         .observeOn(AndroidSchedulers.mainThread())
+         .subscribeOn(Schedulers.newThread());
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href="https://github.com/ReactiveX/RxJava/wiki/Backpressure"&gt;Backpressure问题&lt;/a&gt;，由于Observable中&lt;code&gt;onNext()&lt;/code&gt;调用过快，subscriber的&lt;code&gt;subscribe()&lt;/code&gt;来不及消费，会造成exception。我在下载文件时遇到这类问题，&lt;code&gt;onNext()&lt;/code&gt; 中emit下载进度，&lt;code&gt;subscribe()&lt;/code&gt;中更新进度条。有多种解决方案，我使用的&lt;code&gt;buffer()&lt;/code&gt;来解决的此问题。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Observable.create(
+        // download file, onNext progress
+    )
+    .subscribeOn(Schedulers.io())
+    .observeOn(AndroidSchedulers.mainThread())
+    .buffer(100, TimeUnit.MILLISECONDS)
+    .subscribe(
+        // ProgressBar update
+    );
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="conclusion"&gt;Conclusion&lt;/h3&gt;
+
+&lt;p&gt;以上是我在这段时间使用RxAndroid和RxJava的一些总结，其实RxJava还有很多特性，特别是结合它的多种多样的Operators. 在这里我再总结一下参考文档以及推荐几篇blog，大家有什么疑问可以一起讨论。&lt;/p&gt;
+
+&lt;p&gt;doc: &lt;br&gt;
+ReactiveX: &lt;a href="http://reactivex.io/documentation/observable.html"&gt;http://reactivex.io/documentation/observable.html&lt;/a&gt; &lt;br&gt;
+RxJava: &lt;a href="https://github.com/ReactiveX/RxJava/wiki"&gt;https://github.com/ReactiveX/RxJava/wiki&lt;/a&gt; &lt;br&gt;
+RxAndroid: &lt;a href="https://github.com/ReactiveX/RxAndroid/wiki"&gt;https://github.com/ReactiveX/RxAndroid/wiki&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;blog: &lt;br&gt;
+&lt;a href="http://blog.danlew.net/2014/09/15/grokking-rxjava-part-1/"&gt;Grokking RxJava, Part 1: The Basics&lt;/a&gt; &lt;br&gt;
+&lt;a href="https://mttkay.github.io/blog/2013/08/25/functional-reactive-programming-on-android-with-rxjava/"&gt;Functional Reactive Programming on Android With RxJava&lt;/a&gt; &lt;br&gt;
+&lt;a href="http://futurice.com/blog/top-7-tips-for-rxjava-on-android"&gt;Top 7 Tips for RxJava on Android&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Setup Ghost for GitHub Pages (For OS X)</title><description>&lt;p&gt;To build your own static &lt;a href="https://pages.github.com/"&gt;GitHub Pages&lt;/a&gt; with &lt;a href="https://ghost.org/"&gt;Ghost&lt;/a&gt;, just follow these steps.&lt;/p&gt;
 
 &lt;h4 id="installnodejs"&gt;Install Node.js&lt;/h4&gt;
 

@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="../favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=9890987e89">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=882167e60a">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
 
     <link rel="canonical" href="index.html">
@@ -193,16 +193,44 @@
 
         </footer>
 
+        <div id="disqus_thread"></div>
+        <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        /*
+        var disqus_config = function () {
+        this.page.url = 'derekcz'; // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'ghost-2'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+        */
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+
+        s.src = '//derekcz.disqus.com/embed.js';
+
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
     </article>
 </main>
 
 <aside class="read-next">
+    <a class="read-next-story no-cover" href="../chu-shi-rxjava-rxandroid/">
+        <section class="post">
+            <h2>初识 RxJava &amp; RxAndroid</h2>
+            <p>最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)…</p>
+        </section>
+    </a>
 </aside>
 
 
 
         <footer class="site-footer clearfix">
-            <section class="copyright"><a href="../">今天自然醒</a> © 2015</section>
+            <section class="copyright"><a href="../">今天自然醒</a> © 2016</section>
             <section class="poweredby">Proudly published with <a href="https://ghost.org">Ghost</a></section>
         </footer>
 
@@ -211,7 +239,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     
 
-    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=9890987e89"></script>
-    <script type="text/javascript" src="../assets/js/index.js?v=9890987e89"></script>
-
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=882167e60a"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=882167e60a"></script>
+    <script id="dsq-count-scr" src="http://derekcz.disqus.com/count.js" async></script>
 </body>
