@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="../favicon.ico">
 
-    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=4704ac836c">
+    <link rel="stylesheet" type="text/css" href="../assets/css/screen.css?v=4d8b1dfa1e">
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic%7COpen+Sans:700,400">
 
     <link rel="canonical" href="index.html">
@@ -20,14 +20,14 @@
     <meta property="og:site_name" content="今天自然醒">
     <meta property="og:type" content="article">
     <meta property="og:title" content="初识 RxJava &amp; RxAndroid">
-    <meta property="og:description" content="最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete()) 或者错误(Subscriber.onError())来结束。...">
+    <meta property="og:description" content="最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，如下图，水平方向是时间轴，垂直方向是stream的变化，输入是stream，输出也是stream，这个过程中可以对stream进行任何的操作，比如网络的请求或者是数据的存储。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete(...">
     <meta property="og:url" content="http://localhost:2368/fisrt-see-rxjava-rxandroid/">
     <meta property="article:published_time" content="2016-02-15T11:21:53.942Z">
-    <meta property="article:modified_time" content="2016-02-15T11:35:24.260Z">
+    <meta property="article:modified_time" content="2016-02-19T02:46:30.722Z">
     
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="初识 RxJava &amp; RxAndroid">
-    <meta name="twitter:description" content="最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete()) 或者错误(Subscriber.onError())来结束。...">
+    <meta name="twitter:description" content="最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，如下图，水平方向是时间轴，垂直方向是stream的变化，输入是stream，输出也是stream，这个过程中可以对stream进行任何的操作，比如网络的请求或者是数据的存储。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete(...">
     <meta name="twitter:url" content="http://localhost:2368/fisrt-see-rxjava-rxandroid/">
     
     <script type="application/ld+json">
@@ -45,8 +45,8 @@
     "headline": "初识 RxJava &amp; RxAndroid",
     "url": "http://localhost:2368/fisrt-see-rxjava-rxandroid/",
     "datePublished": "2016-02-15T11:21:53.942Z",
-    "dateModified": "2016-02-15T11:35:24.260Z",
-    "description": "最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete()) 或者错误(Subscriber.onError())来结束。..."
+    "dateModified": "2016-02-19T02:46:30.722Z",
+    "description": "最近开发公司一个内部app，接触到了RxJava和RxAndroid，在这里总结一下自己的理解。 Background 先来说说ReactiveX, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，如下图，水平方向是时间轴，垂直方向是stream的变化，输入是stream，输出也是stream，这个过程中可以对stream进行任何的操作，比如网络的请求或者是数据的存储。 在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过Subscriber.onNext()发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(Subscriber.onComplete(..."
 }
     </script>
 
@@ -95,8 +95,8 @@
 
 <h3 id="background">Background</h3>
 
-<p>先来说说<a href="http://reactivex.io/">ReactiveX</a>, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，任何时间都可以对steams进行处理。如下图，两个不同的streams随时间一直在改变。
-<img src="../content/images/2016/02/1.jpg" alt="A marble diagram representing two different streams"></p>
+<p>先来说说<a href="http://reactivex.io/">ReactiveX</a>, ReactiveX结合了观察者模式和响应式编程的特性，核心思想就是把事件和数据看成一个流(event streams and data streams)，如下图，水平方向是时间轴，垂直方向是stream的变化，输入是stream，输出也是stream，这个过程中可以对stream进行任何的操作，比如网络的请求或者是数据的存储。
+<img src="../content/images/2016/02/3-pic.jpg" alt="A marble diagram representing two different streams"></p>
 
 <p>在ReactiveX中有两个基本terms，Observables(被观察者/事件源)和Subscribers(观察者/订阅者)，Observables发出事件(emit item)，Subscribers消费事件(consume item)。一个Observable可以通过<code>Subscriber.onNext()</code>发出任何数量的items(包括0)通知订阅了它的每一个Subscriber，然后以完成(<code>Subscriber.onComplete()</code>) 或者错误(<code>Subscriber.onError()</code>)来结束。这看起来和观察着模式一样，但注意到有一点不同是如果Observable没有被订阅，它不会发出items.</p>
 
@@ -148,7 +148,7 @@ onCompleted.
 <pre><code>Observable&lt;String&gt; myObservable = Observable.just("Hello world!");
 </code></pre>
 
-<p>对于subscriber，可能并不关心<code>onComplete()</code>和<code>onError()</code></p>
+<p>对于subscriber，可能并不关心<code>onComplete()</code>和<code>onError()</code>, 所以我们可以这样写：</p>
 
 <pre><code>myObservable.subscribe(new Action1&lt;String&gt;() {
     @Override
@@ -180,7 +180,7 @@ onCompleted.
 });
 </code></pre>
 
-<p>这个可以解决上面的问题，但是我们希望在<code>subscribe()</code>中所作出的事情尽量简单(lightweight)，因为它运行在主线程中，也就是subscriber只应该关注结果并且去响应结果。接下来介绍ReactiveX中神奇的Operators.</p>
+<p>这个可以解决上面的问题，但是我们希望在<code>subscribe()</code>中所作出的事情尽量简单(lightweight)，因为最终会回到主线程中运行，也就是subscriber只应该关注stream output并且去响应结果。接下来介绍ReactiveX中神奇的Operators.</p>
 
 <h3 id="operators">Operators</h3>
 
@@ -246,7 +246,7 @@ onCompleted.
 
 <h3 id="schedulers">Schedulers</h3>
 
-<p>在android中很多耗时操作是不能放在主线程中的，比如网络请求。在RxJava，很容易实现实现异步请求，只需要告诉<code>Observer</code>的code在哪个线程中运行以及<code>Subscriber</code>的code在哪个线程中运行。</p>
+<p>在android中很多耗时操作是不能放在主线程中的，比如网络请求。在RxAndroid，很容易实现异步请求，只需要告诉Observer (<code>observeOn()</code>)部分在哪个线程中运行以及Subscriber (<code>subscribeOn()</code>)部分在哪个线程中运行。</p>
 
 <pre><code>Observable.create(
     // network request
@@ -258,7 +258,8 @@ onCompleted.
 );
 </code></pre>
 
-<p>可以看到以上的代码非常简洁，相对于我们之前通过<code>AsyncTask</code>来实现的网络请求，容易很多，清晰很多。</p>
+<p>可以看到以上的代码非常简洁，相对于我们之前通过<code>AsyncTask</code>来实现的网络请求，容易很多，清晰很多。  RxAndroid中提供了多个<a href="http://reactivex.io/documentation/scheduler.html">Schedulers</a>的方法，ipc的实现对于开发者来说是透明的，只需要调用<code>observeOn()</code>和<code>subscribeOn()</code>. You may call <code>ObserveOn</code> multiple times at various points during the chain of Observable operators in order to change on which threads certain of those operators operate, such as following diagram.
+<img src="../content/images/2016/02/4-pic_hd.jpg" alt=""></p>
 
 <h3 id="subscriptions">Subscriptions</h3>
 
@@ -335,7 +336,7 @@ subscription.unsubscribe();
 
 <h3 id="conclusion">Conclusion</h3>
 
-<p>以上是我在这段时间使用RxAndroid和RxJava的一些总结，其实RxJava还有很多特性，特别是结合它的多种多样的Operators. 在这里我再总结一下参考文档以及推荐几篇blog，大家有什么疑问可以一起讨论。</p>
+<p>以上是我在这段时间使用RxAndroid和RxJava的一些总结，其实RxJava还有很多特性，特别是结合它的多种多样的Operators. 在这里我再列一下参考文档以及推荐几篇blog，大家有什么疑问可以一起讨论。</p>
 
 <p>doc: <br>
 ReactiveX: <a href="http://reactivex.io/documentation/observable.html">http://reactivex.io/documentation/observable.html</a> <br>
@@ -424,7 +425,7 @@ RxAndroid: <a href="https://github.com/ReactiveX/RxAndroid/wiki">https://github.
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     
 
-    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=4704ac836c"></script>
-    <script type="text/javascript" src="../assets/js/index.js?v=4704ac836c"></script>
+    <script type="text/javascript" src="../assets/js/jquery.fitvids.js?v=4d8b1dfa1e"></script>
+    <script type="text/javascript" src="../assets/js/index.js?v=4d8b1dfa1e"></script>
     <script id="dsq-count-scr" src="http://derekcz.disqus.com/count.js" async></script>
 </body>
